@@ -1,1 +1,3 @@
-<app-pokemon></app-pokemon>
+<div *ngFor="let pokemon of numOfPokemons; let i = index">
+    <app-pokemon [id]="i"></app-pokemon>
+</div>

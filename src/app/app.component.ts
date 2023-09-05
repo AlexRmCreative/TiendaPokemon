@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ListaDeProductos';
-  ListProducts = ["Manzana", "Pera", "XD"];
-  ListShopping = [];
+  numOfPokemons = []
+
+  ngOnInit() {
+    this.numOfPokemons.length = 20;
+  }
 }

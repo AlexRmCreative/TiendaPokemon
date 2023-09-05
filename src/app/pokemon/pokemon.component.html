@@ -1,5 +1,1 @@
-<div>
-    <div>
-        <img src="{{imgUrl}}" alt="Foto de {{name}}">
-    </div>
-</div>
+<img *ngIf="id > 0" [src]="imgUrl" [alt]="'Foto de ' + name">

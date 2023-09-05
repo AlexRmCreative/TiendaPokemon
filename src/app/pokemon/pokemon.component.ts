@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon',
@@ -8,21 +7,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon.component.scss']
 })
 export class PokemonComponent {
+  @Input() id : number = 1;
   name : string = "";
   imgUrl : string = "";
+  pokemons = [];
+
 
   constructor(private pokemonService : PokemonService) {
   }
 
-  ngOnInit(): void{
-    this.getAllPokemonsAvailable();
+  ngOnInit() {
+    if(this.id > 0)
+      this.setPokemonById(this.id);
   }
-
-  getAllPokemonsAvailable(){
-    this.pokemonService.getPokemon(1).subscribe((data: any) => {
+  setPokemonById(id: number){
+    this.pokemonService.getPokemon(id).subscribe((data: any) => {
       this.name = data.name;
       this.imgUrl = data.sprites.front_default;
-      console.log(this.name);
     });
   }
 }
